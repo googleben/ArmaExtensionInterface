@@ -19,19 +19,19 @@ namespace ArmaExtensionInterface
         public static extern bool FreeLibrary(IntPtr hModule);
 
         [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-        private delegate int RvExtension([MarshalAs(UnmanagedType.LPStr)] StringBuilder output, int outputSize, [MarshalAs(UnmanagedType.LPStr)] string function);
+        public delegate int RvExtension([MarshalAs(UnmanagedType.LPStr)] StringBuilder output, int outputSize, [MarshalAs(UnmanagedType.LPStr)] string function);
 
         [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-        private delegate int RvExtensionArgs([MarshalAs(UnmanagedType.LPStr)] StringBuilder output, int outputSize, [MarshalAs(UnmanagedType.LPStr)] string function, [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPStr, SizeParamIndex = 4)] string[] args, int argCount);
+        public delegate int RvExtensionArgs([MarshalAs(UnmanagedType.LPStr)] StringBuilder output, int outputSize, [MarshalAs(UnmanagedType.LPStr)] string function, [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPStr, SizeParamIndex = 4)] string[] args, int argCount);
 
         [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-        private delegate int ExtensionCallback([MarshalAs(UnmanagedType.LPStr)] string name, [MarshalAs(UnmanagedType.LPStr)] string function, [MarshalAs(UnmanagedType.LPStr)] string data);
+        public delegate int ExtensionCallback([MarshalAs(UnmanagedType.LPStr)] string name, [MarshalAs(UnmanagedType.LPStr)] string function, [MarshalAs(UnmanagedType.LPStr)] string data);
 
         [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-        private delegate void RvExtensionRegisterCallback([MarshalAs(UnmanagedType.FunctionPtr)] ExtensionCallback func);
+        public delegate void RvExtensionRegisterCallback([MarshalAs(UnmanagedType.FunctionPtr)] ExtensionCallback func);
 
         [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-        private delegate void RvExtensionVersion([MarshalAs(UnmanagedType.LPStr)] StringBuilder output, int outputSize);
+        public delegate void RvExtensionVersion([MarshalAs(UnmanagedType.LPStr)] StringBuilder output, int outputSize);
 
         private const int OutputSize = 10240;
         private readonly bool _loaded;
